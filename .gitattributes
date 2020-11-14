@@ -1,2 +1,56 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+
+import random
+
+choice = str(input("type cpu to have computer guess your number or type play to guess the computer's number: "))
+
+if choice == "play":
+    print("Think of a number between 1 and 100")
+    secretNumber = int(input("Enter your number here: "))
+    guess = random.randrange(100)
+    tries = 0
+    x = 1
+    y = 100
+    win = False
+    print("I guess " + str(guess))
+    while win == False:
+        close = str(input("Is my guess high, low, or correct? "))
+        if close == ("high"):
+            y = guess
+            tries += 1
+            guess = random.randrange(x,y)
+            print("I guess " + str(guess))
+        elif close == ("low"):
+            x = guess
+            tries += 1
+            guess = random.randrange(x,y)
+            print("I guess " + str(guess))
+        elif close == ("correct"):
+            tries += 1
+            win == True
+            print("Yay I got it!" + " It took me " + str(tries) + " tries")
+            break
+        else: "thats not an option"
+
+elif choice == "cpu":
+
+    print("Guess the number I am thinking of between 0 and 100")
+    guessTotal = 0
+    secretNumber = random.randrange(100)
+    guess = 0
+
+    while (guess) != secretNumber:
+        guessTotal = guessTotal + 1
+        guess = int(input("Enter your guess: "))
+        if guess == secretNumber:
+            print("Good job! " + str(secretNumber) + " was my number.")
+            print("It took you " + str(guessTotal) + " guesses")
+        elif guess < secretNumber:
+            print("LOL! Sorry, " + str(guess) + " is too low")
+        elif guess > secretNumber:
+            print("LOL! Sorry, " + str(guess) + " is too high")
+
+else:
+    print("LOL THATS NOT A CHOICE")
